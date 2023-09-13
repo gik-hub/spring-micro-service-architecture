@@ -1,0 +1,33 @@
+# Registration of the school microservice on eureka take place here
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8070
+spring:
+  application:
+    name: school
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/schools
+    username: postgres
+    password: gikhub
+  jpa:
+    hibernate:
+      ddl-auto: create
+      database: postgresql
+      database-platform: org.hibernate.dialect.postgreSQLDialect
+
+
+
+application:
+  config:
+    student-url: http://localhost:8090/api/v1/students
+
